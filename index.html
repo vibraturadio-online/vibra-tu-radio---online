@@ -1,1124 +1,1057 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vibra Tu Radio Online</title>
-<meta name="description" content="Vibra Tu Radio Online. Siempre informando, siempre contigo.">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-<style>
-:root{
---g:#58c61a;
---g2:#08762d;
---y:#ffd21c;
---black:#050706;
---white:#fff;
---cream:#f7f8f4;
---ink:#182019
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:var(--cream);
-color:var(--ink)
-}
-a{text-decoration:none;color:inherit}
-.container{width:min(1180px,92%);margin:auto}
-
-header{
-position:sticky;
-top:0;
-z-index:30;
-background:#050706;
-color:#fff;
-box-shadow:0 4px 18px #0005
-}
-
-.nav{
-min-height:76px;
-display:flex;
-align-items:center;
-gap:24px
-}
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-margin-right:auto;
-font-weight:900;
-font-size:21px;
-line-height:.9
-}
-
-.brand .mic{font-size:34px}
-.brand b{color:var(--g)}
-.brand em{font-style:normal;color:#fff}
-.brand small{
-display:block;
-color:var(--y);
-font-size:10px;
-letter-spacing:2px;
-margin-top:6px
-}
-
-nav{
-display:flex;
-gap:20px;
-font-size:12px;
-font-weight:900
-}
-
-nav a{
-padding:30px 0;
-border-bottom:3px solid transparent
-}
-
-nav a:hover{
-color:var(--g);
-border-color:var(--g)
-}
-
-.social{
-display:flex;
-gap:7px
-}
-
-.social a{
-width:30px;
-height:30px;
-border-radius:50%;
-display:grid;
-place-items:center;
-background:#202522;
-font-weight:900
-}
-
-.hero{
-min-height:520px;
-background:
-linear-gradient(90deg,#000 0%,#000e 38%,#0005 70%),
-url('hero-studio.jpg') right center/cover;
-display:flex;
-align-items:center
-}
-
-.hero-content{
-padding:75px 0;
-color:#fff;
-max-width:650px
-}
-
-.eyebrow{
-color:var(--g);
-font-size:13px;
-font-weight:900;
-letter-spacing:2px
-}
-
-.hero h1{
-font-size:clamp(48px,7vw,82px);
-line-height:.84;
-margin:15px 0
-}
-
-.hero h1 b{color:var(--g)}
-
-.online{
-font-size:42px;
-font-weight:900;
-color:var(--g);
-letter-spacing:-2px
-}
-
-.slogan{
-display:inline-block;
-background:var(--y);
-color:#111;
-padding:8px 20px;
-font-size:22px;
-font-style:italic;
-font-weight:900;
-transform:rotate(-1deg);
-margin:12px 0
-}
-
-.hero p{
-font-size:16px;
-line-height:1.6;
-max-width:560px
-}
-
-.buttons{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-margin-top:22px
-}
-
-.btn{
-padding:14px 22px;
-border-radius:9px;
-font-weight:900;
-border:2px solid var(--g)
-}
-
-.btn.green{
-background:var(--g);
-color:#071007
-}
-
-.btn.dark{
-border-color:#fff;
-color:#fff
-}
-
-.player{
-margin-top:-45px;
-position:relative;
-z-index:5
-}
-
-.player-card{
-background:#090c0a;
-color:#fff;
-border:1px solid #4e5a50;
-border-radius:20px;
-padding:18px 24px;
-display:flex;
-align-items:center;
-gap:18px;
-box-shadow:0 12px 40px #0005
-}
-
-.station-logo{
-width:62px;
-height:62px;
-border:2px solid var(--g);
-border-radius:50%;
-display:grid;
-place-items:center;
-font-size:30px
-}
-
-.player-main{flex:1}
-
-.live{
-color:#ff3838;
-font-weight:900;
-font-size:13px
-}
-
-.player-main strong{
-display:block;
-font-size:20px;
-margin:4px 0
-}
-
-.player-main small{color:#aab4ad}
-
-audio{
-width:min(430px,100%);
-accent-color:var(--g)
-}
-
-.section{padding:65px 0}
-
-.features{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-background:#fff;
-border-radius:16px;
-box-shadow:0 5px 22px #0000000c
-}
-
-.feature{
-text-align:center;
-padding:24px 10px;
-border-right:1px solid #e4e8e4
-}
-
-.feature:last-child{border:0}
-
-.ico{
-font-size:30px;
-color:var(--g2)
-}
-
-.feature h3{
-font-size:13px;
-margin:9px 0
-}
-
-.feature p{
-font-size:11px;
-color:#717a73;
-margin:0;
-line-height:1.4
-}
-
-.section-head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-margin-bottom:24px
-}
-
-.section-head h2{
-margin:0;
-font-size:29px
-}
-
-.line{
-width:55px;
-height:4px;
-background:var(--g);
-margin-top:9px
-}
-
-.green-link{
-color:var(--g2);
-font-weight:900;
-font-size:13px
-}
-
-.columns{
-display:grid;
-grid-template-columns:1.2fr 1fr 1.2fr;
-gap:22px
-}
-
-.card{
-background:#fff;
-border-radius:16px;
-overflow:hidden;
-box-shadow:0 5px 22px #0000000c
-}
-
-.card-body{padding:20px}
-
-.card h3{
-margin:10px 0;
-font-size:19px
-}
-
-.muted{
-font-size:13px;
-color:#707970;
-line-height:1.55
-}
-
-.tag{
-display:inline-block;
-padding:5px 9px;
-border-radius:20px;
-background:#e9f7e7;
-color:var(--g2);
-font-size:10px;
-font-weight:900
-}
-
-.news-img{
-height:185px;
-background:linear-gradient(135deg,#071108,#4d9c32);
-display:grid;
-place-items:center;
-font-size:65px;
-color:#fff
-}
-
-.schedule{padding:0 20px 20px}
-
-.slot{
-display:grid;
-grid-template-columns:80px 1fr;
-gap:12px;
-padding:13px 0;
-border-bottom:1px solid #eee
-}
-
-.slot time{
-color:var(--g2);
-font-weight:900
-}
-
-.slot strong{display:block}
-.slot small{color:#777}
-
-.pod-img{
-height:185px;
-background:linear-gradient(135deg,#090909,#253325);
-display:grid;
-place-items:center;
-color:#fff;
-text-align:center;
-font-size:30px;
-font-weight:900
-}
-
-.pod-img b{color:var(--g)}
-
-.stats{
-background:linear-gradient(115deg,#063c1c,#0b8d38);
-color:#fff;
-padding:30px 0
-}
-
-.stats-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-text-align:center
-}
-
-.stat strong{
-display:block;
-color:var(--y);
-font-size:31px
-}
-
-.stat span{font-size:12px}
-
-.ads{
-padding:55px 0;
-background:#fff
-}
-
-.ad-grid{
-display:grid;
-grid-template-columns:1.1fr repeat(3,1fr);
-gap:14px
-}
-
-.ad{
-border:1px solid #dce3dc;
-border-radius:14px;
-padding:20px;
-background:#fff
-}
-
-.ad h3{margin:5px 0 10px}
-
-.ad .btn{
-display:inline-block;
-padding:9px 13px;
-font-size:12px;
-border-color:var(--g2);
-margin-top:8px
-}
-
-.contact{
-padding:60px 0
-}
-
-.contact-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:22px
-}
-
-.contact-box{
-background:#fff;
-border-radius:16px;
-padding:25px
-}
-
-.wa{
-display:inline-block;
-background:#1dbb55;
-color:#fff;
-padding:12px 17px;
-border-radius:8px;
-font-weight:900;
-margin-top:10px
-}
-
-.social-large{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-top:15px
-}
-
-.social-large a{
-padding:10px 14px;
-border-radius:8px;
-background:#eef3ed;
-color:var(--g2);
-font-weight:900;
-font-size:13px
-}
-
-.email{
-display:inline-block;
-margin-top:12px;
-color:var(--g2);
-font-weight:900
-}
-
-footer{
-background:#050706;
-color:#fff;
-padding:35px 0
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:1.2fr 1fr 1fr 1fr;
-gap:30px
-}
-
-.footer-title{
-color:var(--g);
-font-weight:900;
-margin-bottom:12px
-}
-
-.footer-links a{
-display:block;
-color:#bbb;
-font-size:12px;
-margin:7px 0
-}
-
-.copy{
-border-top:1px solid #293029;
-margin-top:25px;
-padding-top:18px;
-text-align:center;
-color:#888;
-font-size:11px
-}
-
-@media(max-width:950px){
-nav{display:none}
-.features{grid-template-columns:repeat(3,1fr)}
-.feature:nth-child(3){border:0}
-.columns,.ad-grid,.footer-grid{grid-template-columns:1fr}
-.contact-grid{grid-template-columns:1fr}
-.player-card{flex-wrap:wrap}
-.player-main{min-width:190px}
-}
-
-@media(max-width:520px){
-.features{grid-template-columns:repeat(2,1fr)}
-.hero{min-height:590px}
-.hero-content{padding:50px 0}
-.online{font-size:34px}
-.slogan{font-size:17px}
-.player{margin-top:-25px}
-.section{padding:45px 0}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vibra Tu Radio Online</title>
+  <meta name="description" content="Vibra Tu Radio Online. Siempre informando, siempre contigo. Música, noticias, entretenimiento y podcast.">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --morado: #21002f;
+      --morado-2: #5b147f;
+      --violeta: #8d35b5;
+      --naranja: #ff7a00;
+      --amarillo: #ffc400;
+      --negro: #090909;
+      --negro-2: #121212;
+      --blanco: #ffffff;
+      --gris: #cfcfcf;
+      --gris-2: #969696;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--negro);
+      color: var(--blanco);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(9, 9, 9, 0.97);
+      border-bottom: 1px solid rgba(255, 122, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 19px;
+      letter-spacing: .5px;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .brand span {
+      color: var(--amarillo);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: bold;
+      color: #eee;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: var(--naranja);
+    }
+
+    .social {
+      display: flex;
+      gap: 8px;
+    }
+
+    .social a {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--morado-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .3s;
+    }
+
+    .social a:hover {
+      background: var(--naranja);
+      transform: translateY(-3px);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 590px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 75% 40%, rgba(141,53,181,.38), transparent 32%),
+        radial-gradient(circle at 20% 80%, rgba(255,122,0,.18), transparent 28%),
+        linear-gradient(135deg, #090909 0%, #21002f 60%, #090909 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(255,196,0,.12);
+      border-radius: 50%;
+      right: -180px;
+      top: -180px;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      padding: 70px 25px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .live-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,122,0,.13);
+      border: 1px solid rgba(255,122,0,.4);
+      color: var(--amarillo);
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .live-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ff2d2d;
+      box-shadow: 0 0 12px #ff2d2d;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: .95;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--naranja);
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: var(--gris);
+      font-size: 19px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: .3s;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--naranja);
+      color: #111;
+    }
+
+    .btn-primary:hover {
+      background: var(--amarillo);
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255,255,255,.25);
+      background: rgba(255,255,255,.05);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--naranja);
+      color: var(--naranja);
+    }
+
+    .hero-logo {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-logo img {
+      width: min(390px, 75vw);
+      filter: drop-shadow(0 0 35px rgba(141,53,181,.45));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* ================= GENERAL ================= */
+
+    section {
+      padding: 85px 25px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title small {
+      color: var(--naranja);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(30px, 5vw, 48px);
+      margin-top: 8px;
+    }
+
+    .section-title p {
+      max-width: 650px;
+      margin: 10px auto 0;
+      color: var(--gris-2);
+    }
+
+    /* ================= PLAYER ================= */
+
+    .player-section {
+      background: #0d0d0d;
+    }
+
+    .player {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(91,20,127,.35), rgba(18,18,18,.95));
+      border: 1px solid rgba(255,122,0,.35);
+      box-shadow: 0 20px 70px rgba(0,0,0,.5);
+    }
+
+    .player-top {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 25px;
+    }
+
+    .player-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: contain;
+    }
+
+    .player-info h3 {
+      font-size: 27px;
+    }
+
+    .player-info p {
+      color: var(--gris);
+    }
+
+    .onair {
+      display: inline-block;
+      margin-top: 7px;
+      color: var(--amarillo);
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    audio {
+      width: 100%;
+      height: 55px;
+    }
+
+    .player-message {
+      text-align: center;
+      margin-top: 15px;
+      color: var(--gris-2);
+      font-size: 13px;
+    }
+
+    /* ================= CARDS ================= */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--negro-2);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 28px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(255,122,0,.5);
+    }
+
+    .card-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--morado-2);
+      color: var(--amarillo);
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: var(--gris);
+      font-size: 14px;
+    }
+
+    /* ================= NOTICIAS ================= */
+
+    .news-section {
+      background: linear-gradient(180deg, #0d0d0d, #16001f);
+    }
+
+    .news-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .news-image {
+      height: 190px;
+      background:
+        linear-gradient(135deg, var(--morado-2), var(--naranja));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+    }
+
+    .news-content {
+      padding: 25px;
+    }
+
+    .tag {
+      color: var(--naranja);
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .news-content h3 {
+      margin: 8px 0;
+    }
+
+    /* ================= PROGRAMACION ================= */
+
+    .schedule {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      padding: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.025);
+    }
+
+    .schedule-row strong {
+      color: var(--amarillo);
+    }
+
+    .schedule-row span {
+      color: var(--gris);
+    }
+
+    /* ================= PODCAST ================= */
+
+    .podcast {
+      background:
+        radial-gradient(circle at 80% 30%, rgba(255,122,0,.22), transparent 30%),
+        linear-gradient(135deg, #21002f, #090909);
+    }
+
+    .podcast-box {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .podcast-art {
+      min-height: 300px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--morado-2), #090909);
+      border: 1px solid rgba(255,122,0,.35);
+      font-size: 80px;
+    }
+
+    .podcast h2 {
+      font-size: 45px;
+      color: var(--amarillo);
+      margin-bottom: 15px;
+    }
+
+    .podcast p {
+      color: var(--gris);
+      margin-bottom: 25px;
+    }
+
+    /* ================= ESTADISTICAS ================= */
+
+    .stats {
+      background: #080808;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat {
+      padding: 30px 15px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      background: #111;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--naranja);
+      font-size: 36px;
+    }
+
+    .stat span {
+      color: var(--gris);
+      font-size: 14px;
+    }
+
+    /* ================= PUBLICIDAD ================= */
+
+    .advertising {
+      background: linear-gradient(135deg, #170020, #090909);
+    }
+
+    .advertising-box {
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+      padding: 55px 30px;
+      border-radius: 25px;
+      border: 1px solid rgba(255,196,0,.25);
+      background: rgba(255,255,255,.03);
+    }
+
+    .advertising-box i {
+      font-size: 50px;
+      color: var(--amarillo);
+      margin-bottom: 20px;
+    }
+
+    .advertising-box h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .advertising-box p {
+      color: var(--gris);
+      margin-bottom: 25px;
+    }
+
+    /* ================= CONTACTO ================= */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .contact-box {
+      padding: 30px;
+      background: var(--negro-2);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0;
+      color: var(--gris);
+    }
+
+    .contact-item i {
+      color: var(--naranja);
+      width: 30px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .contact-socials a {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--morado-2);
+      font-size: 19px;
+      transition: .3s;
+    }
+
+    .contact-socials a:hover {
+      background: var(--naranja);
+      color: #111;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #050505;
+      border-top: 1px solid rgba(255,122,0,.2);
+      padding: 45px 25px 25px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    footer h3 {
+      color: var(--amarillo);
+      margin-bottom: 15px;
+    }
+
+    footer p,
+    footer a {
+      color: var(--gris-2);
+      font-size: 14px;
+    }
+
+    footer a {
+      display: block;
+      margin: 8px 0;
+    }
+
+    footer a:hover {
+      color: var(--naranja);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+
+      .header-container {
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .podcast-box {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .header-container {
+        padding: 12px 15px;
+      }
+
+      .brand {
+        font-size: 16px;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      nav {
+        gap: 9px;
+      }
+
+      nav a {
+        font-size: 11px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 65px 18px;
+        gap: 35px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 65px 18px;
+      }
+
+      .player {
+        padding: 20px;
+      }
+
+      .player-top {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-row {
+        grid-template-columns: 90px 1fr;
+        font-size: 14px;
+      }
+
+      .podcast h2 {
+        font-size: 35px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<div class="container nav">
+  <!-- ================= HEADER ================= -->
 
-<a class="brand" href="#inicio">
-<span class="mic">🎙️</span>
-<span>
-VIBRA <b>TU</b> <em>RADIO</em>
-<small>ONLINE</small>
-</span>
-</a>
+  <header>
+    <div class="header-container">
 
-<nav>
-<a href="#inicio">INICIO</a>
-<a href="#envivo">EN VIVO</a>
-<a href="#noticias">NOTICIAS</a>
-<a href="#programacion">PROGRAMACIÓN</a>
-<a href="#podcast">PODCAST / VIDEOS</a>
-<a href="#publicidad">PUBLICIDAD</a>
-<a href="#contacto">CONTACTO</a>
-</nav>
+      <a href="#inicio" class="brand">
+        <img src="logo vibra.jpg" alt="Logo Vibra Tu Radio">
+        <div>
+          VIBRA TU RADIO<br>
+          <span>ONLINE</span>
+        </div>
+      </a>
 
-<div class="social">
+      <nav>
+        <a href="#inicio">INICIO</a>
+        <a href="#en-vivo">EN VIVO</a>
+        <a href="#noticias">NOTICIAS</a>
+        <a href="#programacion">PROGRAMACIÓN</a>
+        <a href="#podcast">PODCAST</a>
+        <a href="#publicidad">PUBLICIDAD</a>
+        <a href="#contacto">CONTACTO</a>
+      </nav>
 
-<div class="social">
+      <div class="social">
 
-  <a href="https://www.facebook.com/share/19FChaREyt/" target="_blank" aria-label="Facebook">
-    <i class="fa-brands fa-facebook-f"></i>
-  </a>
+        <a href="https://www.facebook.com/share/19FChaREyt/"
+           target="_blank"
+           aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
 
-  <a href="https://www.instagram.com/vibr.a" target="_blank" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
+        <a href="https://www.instagram.com/vibr.a"
+           target="_blank"
+           aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
 
-  <a href="https://youtube.com/@vibraturadio" target="_blank" aria-label="YouTube">
-    <i class="fa-brands fa-youtube"></i>
-  </a>
+        <a href="https://youtube.com/@vibraturadio"
+           target="_blank"
+           aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
 
-  <a href="https://wa.me/573112771457" target="_blank" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
+        <a href="https://wa.me/573112771457"
+           target="_blank"
+           aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
 
-</div>
+      </div>
 
-</div>
-</header>
+    </div>
+  </header>
 
 
-<main>
+  <!-- ================= HERO ================= -->
 
-<section id="inicio" class="hero">
-<div class="container hero-content">
+  <main id="inicio">
 
-<div class="eyebrow">
-EMISORA ONLINE · RADIO Y CONTENIDOS
-</div>
+    <section class="hero">
 
-<h1>VIBRA TU RADIO</h1>
+      <div class="hero-content">
 
-<div class="online">ONLINE</div>
+        <div>
 
-<div class="slogan">
-Siempre informando, siempre contigo
-</div>
+          <div class="live-label">
+            <span class="live-dot"></span>
+            TRANSMISIÓN EN VIVO
+          </div>
 
-<p>
-Una emisora online que informa, conecta y entretiene a través de la música, la cultura, las historias y la participación de nuestra audiencia.
-</p>
+          <h1>
+            VIBRA<br>
+            <span>TU RADIO</span>
+          </h1>
 
-<div class="buttons">
+          <p>
+            Música, información, entretenimiento y voces que conectan.
+            Estamos contigo donde estés.
+          </p>
 
-<a class="btn green" href="#envivo">
-▶️ ESCUCHAR EN VIVO
-</a>
+          <div class="hero-buttons">
 
-<a class="btn dark" href="#contacto">
-CONÓCENOS MÁS
-</a>
+            <a href="#en-vivo" class="btn btn-primary">
+              <i class="fa-solid fa-play"></i>
+              ESCUCHAR EN VIVO
+            </a>
 
-</div>
+            <a href="#programacion" class="btn btn-secondary">
+              <i class="fa-solid fa-calendar-days"></i>
+              VER PROGRAMACIÓN
+            </a>
 
-</div>
+          </div>
+
+        </div>
+
+        <div class="hero-logo">
+          <img src="logo vibra.jpg" alt="Vibra Tu Radio Online">
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= EN VIVO ================= -->
+
+    <section class="player-section" id="en-vivo">
+
+      <div class="container">
+
+        <div class="section-title">
+          <small>AHORA MISMO</small>
+          <h2>Escúchanos en vivo</h2>
+          <p>
+            Dale play y disfruta nuestra transmisión online.
+          </p>
+        </div>
+
+        <div class="player">
+
+          <div class="player-top">
+
+            <img class="player-logo"
+                 src="logo vibra.jpg"
+                 alt="Vibra Tu Radio">
+
+            <div class="player-info">
+
+              <h3>Vibra Tu Radio Online</h3>
+
+              <p>
+                Música, información y entretenimiento.
+              </p>
+
+              <span class="onair">
+                ● AL AIRE
+              </span>
+
+            </div>
+
+          </div>
+
+          <!-- NO CAMBIAR ESTE ENLACE -->
+          <audio controls preload="none"
+                 src="https://stream.integracionvirtual.com/proxy/vibraturadio?mp=/stream">
+            Tu navegador no permite reproducir el audio.
+          </audio>
+
+          <div class="player-message">
+            Presiona ▶️ para comenzar a escuchar.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= SERVICIOS ================= -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="section-title">
+          <small>VIBRA CONTIGO</small>
+          <h2>Mucho más que radio</h2>
+        </div>
+
+        <div class="cards">
+
+          <div class="card">
+
+            <div class="card-icon">
+              <i class="fa-solid fa-radio"></i>
+            </div>
+
+            <h3>Radio Online</h3>
+
+            <p>
+              Disfruta nuestra programación desde cualquier lugar
+              y en cualquier dispositivo.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="card-icon">
+              <i class="fa-solid fa-newspaper"></i>
+            </div>
+
+            <h3>Noticias</h3>
+
+            <p>
+              Información y actualidad para mantenerte siempre al día.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="card-icon">
+              <i class="fa-solid fa-microphone-lines"></i>
+            </div>
+
+            <h3>Podcast</h3>
+
+            <p>
+              Conversaciones, historias y contenidos para escuchar
+              cuando quieras.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= NOTICIAS ================= -->
+
+    <section class="news-section" id="noticias">
+
+      <div class="container
+        </div>
 </section>
-
-
-<section id="envivo" class="player">
-<div class="container">
-
-<div class="player-card">
-
-<div class="station-logo">🎙️</div>
-
-<div class="player-main">
-
-<div class="live">🔴 EN VIVO</div>
-
-<strong>Vibra Tu Radio Online</strong>
-
-<small>
-Siempre informando, siempre contigo
-</small>
-
-</div>
-
-<audio controls preload="none" src="https://stream.integracionvirtual.com/proxy/vibraturadio?mp=/stream">
-Tu navegador no permite reproducir el audio.
-</audio>
-
-</div>
-</div>
-</section>
-
-
-<section class="section">
-<div class="container">
-
-<div class="features">
-
-<a class="feature" href="#noticias">
-<div class="ico">📰</div>
-<h3>INFORMACIÓN</h3>
-<p>Noticias locales, regionales y nacionales</p>
-</a>
-
-<a class="feature" href="#programacion">
-<div class="ico">♫</div>
-<h3>MÚSICA</h3>
-<p>Lo mejor de nuestra música y cultura</p>
-</a>
-
-<a class="feature" href="#contacto">
-<div class="ico">👥</div>
-<h3>COMUNIDAD</h3>
-<p>Historias, líderes y procesos</p>
-</a>
-
-<a class="feature" href="#podcast">
-<div class="ico">🎙️</div>
-<h3>ENTREVISTAS</h3>
-<p>Voces que inspiran</p>
-</a>
-
-<a class="feature" href="#podcast">
-<div class="ico">🎧</div>
-<h3>PODCASTS</h3>
-<p>Programas para escuchar siempre</p>
-</a>
-
-<a class="feature" href="#publicidad">
-<div class="ico">📣</div>
-<h3>PARTICIPA</h3>
-<p>Tu voz también hace parte</p>
-</a>
-
-</div>
-</div>
-</section>
-
-
-<section id="noticias" class="section" style="padding-top:5px">
-<div class="container">
-
-<div class="section-head">
-
-<div>
-<h2>Noticias destacadas</h2>
-<div class="line"></div>
-</div>
-
-<a class="green-link" href="#noticias">
-Ver todas →
-</a>
-
-</div>
-
-
-<div class="columns">
-
-<article class="card">
-
-<div class="news-img">🎙️</div>
-
-<div class="card-body">
-
-<span class="tag">COMUNIDAD</span>
-
-<h3>
-La voz de la comunidad que cuenta nuestras realidades
-</h3>
-
-<p class="muted">
-Historias que inspiran, informan y construyen juntos un mejor presente.
-</p>
-
-</div>
-
-</article>
-
-
-<article id="programacion" class="card">
-
-<div class="card-body">
-
-<h3>Programación</h3>
-
-<div class="line"></div>
-
-</div>
-
-<div class="schedule">
-
-<div class="slot">
-<time>06:00 a.m.</time>
-<div>
-<strong>Buenos Días</strong>
-<small>Información y noticias</small>
-</div>
-</div>
-
-<div class="slot">
-<time>09:00 a.m.</time>
-<div>
-<strong>Voces del Territorio</strong>
-<small>Opinión y participación</small>
-</div>
-</div>
-
-<div class="slot">
-<time>12:00 p.m.</time>
-<div>
-<strong>Ritmos que nos unen</strong>
-<small>Música y cultura</small>
-</div>
-</div>
-
-<div class="slot">
-<time>03:00 p.m.</time>
-<div>
-<strong>En la Tarde Contigo</strong>
-<small>Música, información y cultura</small>
-</div>
-</div>
-
-<div class="slot">
-<time>06:00 p.m.</time>
-<div>
-<strong>Noche de Clásicos</strong>
-<small>Los mejores clásicos</small>
-</div>
-</div>
-
-</div>
-</article>
-
-
-<article id="podcast" class="card">
-
-<div class="pod-img">
-QUE <b>CAGADA</b>
-<br>
-<small style="font-size:13px;color:#ccc">
-PODCAST
-</small>
-</div>
-
-<div class="card-body">
-
-<span class="tag">
-PODCAST / VIDEOS
-</span>
-
-<h3>QUE CAGADA</h3>
-
-<p class="muted">
-Tres mujeres hablando de la vida sin filtros.
-</p>
-
-<a
-class="btn green"
-style="display:inline-block;padding:9px 13px;font-size:12px"
-href="https://youtube.com/@vibraturadio"
-target="_blank"
->
-▶️ VER EN YOUTUBE
-</a>
-
-</div>
-
-</article>
-
-</div>
-</div>
-</section>
-
-
-<section class="stats">
-<div class="container">
-
-<div class="stats-grid">
-
-<div class="stat">
-<strong>15.600+</strong>
-<span>seguidores en Facebook</span>
-</div>
-
-<div class="stat">
-<strong>91K – 144K</strong>
-<span>visualizaciones diarias</span>
-</div>
-
-<div class="stat">
-<strong>1.580 – 3.434</strong>
-<span>interacciones diarias</span>
-</div>
-
-</div>
-</div>
-</section>
-
-
-<section id="publicidad" class="ads">
-<div class="container">
-
-<div class="section-head">
-
-<div>
-<h2>Publicita con nosotros</h2>
-<div class="line"></div>
-</div>
-
-</div>
-
-
-<div class="ad-grid">
-
-<div>
-
-<h2>Haz vibrar tu marca</h2>
-
-<p class="muted">
-Promociona tu negocio con menciones al aire, contenidos, redes sociales y formatos audiovisuales.
-</p>
-
-<a class="btn green" href="#contacto">
-VER PAQUETES
-</a>
-
-</div>
-
-
-<div class="ad">
-
-<h3>PAQUETE BÁSICO</h3>
-
-<p class="muted">
-Menciones en vivo y publicaciones en redes.
-</p>
-
-<a class="btn" href="#contacto">
-Más información
-</a>
-
-</div>
-
-
-<div class="ad">
-
-<h3>PAQUETE ESTÁNDAR</h3>
-
-<p class="muted">
-Menciones + cuñas radiales + contenido en redes.
-</p>
-
-<a class="btn" href="#contacto">
-Más información
-</a>
-
-</div>
-
-
-<div class="ad">
-
-<h3>PAQUETE PREMIUM</h3>
-
-<p class="muted">
-Menciones + cuñas + entrevistas + contenido audiovisual.
-</p>
-
-<a class="btn" href="#contacto">
-Más información
-</a>
-
-</div>
-
-</div>
-</div>
-</section>
-
-
-<section id="contacto" class="contact">
-<div class="container">
-
-<div class="section-head">
-
-<div>
-<h2>Contáctanos</h2>
-<div class="line"></div>
-</div>
-
-</div>
-
-
-<div class="contact-grid">
-
-
-<div class="contact-box">
-
-<h3>📲 ¿Quieres hablar con nosotros?</h3>
-
-<p class="muted">
-Comunícate directamente con Vibra Tu Radio Online.
-</p>
-
-<a
-class="wa"
-href="https://wa.me/573112771457"
-target="_blank"
->
-💬 ESCRÍBENOS POR WHATSAPP
-</a>
-
-<p>
-<a
-class="email"
-href="mailto:vibraturadio@gmail.com"
->
-✉️ vibraturadio@gmail.com
-</a>
-</p>
-
-</div>
-
-
-<div class="contact-box">
-
-<h3>🌐 Síguenos</h3>
-
-<p class="muted">
-Encuéntranos en nuestras redes sociales oficiales.
-</p>
-
-
-<div class="social-large">
-
-
-<a href="https://www.facebook.com/share/19FChaREyt/" target="_blank">
-<i class="fa-brands fa-facebook-f"></i> Facebook
-</a>
-
-<a href="https://www.instagram.com/vibr.a" target="_blank">
-<i class="fa-brands fa-instagram"></i> Instagram
-</a>
-
-<a href="https://youtube.com/@vibraturadio" target="_blank">
-<i class="fa-brands fa-youtube"></i> YouTube
-</a>
-
-<a href="https://wa.me/573112771457" target="_blank">
-<i class="fa-brands fa-whatsapp"></i> WhatsApp
-</a>
-
-</div>
-
-
-<p>
-<strong>
-Siempre informando, siempre contigo.
-</strong>
-</p>
-
-</div>
-
-</div>
-</div>
-</section>
-
 </main>
 
-
 <footer>
+  <div class="footer-grid">
 
-<div class="container">
+    <div>
+      <h3>VIBRA TU RADIO ONLINE</h3>
+      <p>
+        Música, información y entretenimiento.
+        Siempre informando, siempre contigo.
+      </p>
+    </div>
 
-<div class="footer-grid">
+    <div>
+      <h3>Enlaces</h3>
+      <a href="#inicio">Inicio</a>
+      <a href="#en-vivo">En vivo</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#programacion">Programación</a>
+      <a href="#podcast">Podcast</a>
+    </div>
 
+    <div>
+      <h3>Contacto</h3>
+      <a href="https://wa.me/573112771457" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="mailto:vibraturadio@gmail.com">
+        <i class="fa-solid fa-envelope"></i> Correo electrónico
+      </a>
+    </div>
 
-<div>
+  </div>
 
-<div class="brand" style="margin:0">
-
-<span class="mic">🎙️</span>
-
-<span>
-VIBRA <b>TU</b> <em>RADIO</em>
-<small>ONLINE</small>
-</span>
-
-</div>
-
-<p style="color:#aaa;font-size:12px">
-Siempre informando, siempre contigo.
-</p>
-
-</div>
-
-
-<div>
-
-<div class="footer-title">
-ENLACES RÁPIDOS
-</div>
-
-<div class="footer-links">
-
-<a href="#inicio">Inicio</a>
-<a href="#envivo">En vivo</a>
-<a href="#noticias">Noticias</a>
-<a href="#programacion">Programación</a>
-<a href="#podcast">Podcast / Videos</a>
-<a href="#publicidad">Publicidad</a>
-
-</div>
-
-</div>
-
-
-<div>
-
-<div class="footer-title">
-CONTÁCTANOS
-</div>
-
-<div class="footer-links">
-
-<a
-href="https://wa.me/573112771457"
-target="_blank"
->
-WhatsApp
-</a>
-
-<a
-href="mailto:vibraturadio@gmail.com"
->
-Correo electrónico
-</a>
-
-<a href="#publicidad">
-Información comercial
-</a>
-
-</div>
-
-</div>
-
-
-<div>
-
-<div class="footer-title">
-SÍGUENOS
-</div>
-
-<div class="social">
-
-<a href="https://www.facebook.com/share/19FChaREyt/" target="_blank">
-<i class="fa-brands fa-facebook-f"></i>
-</a>
-
-<a href="https://www.instagram.com/vibr.a" target="_blank">
-<i class="fa-brands fa-instagram"></i>
-</a>
-
-<a href="https://youtube.com/@vibraturadio" target="_blank">
-<i class="fa-brands fa-youtube"></i>
-</a>
-
-<a href="https://wa.me/573112771457" target="_blank">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="copy">
-© 2026 Vibra Tu Radio Online · Todos los derechos reservados
-</div>
-
-</div>
-
+  <div class="footer-bottom">
+    © 2026 Vibra Tu Radio Online · Siempre informando, siempre contigo.
+  </div>
 </footer>
 
 </body>
