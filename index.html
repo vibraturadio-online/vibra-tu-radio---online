@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Vibra Tu Radio Online</title>
-  <meta name="description" content="Vibra Tu Radio Online. Siempre informando, siempre contigo. Música, noticias, entretenimiento y podcast.">
-
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Vibra Tu Radio Online</title>  <meta name="description" content="Vibra Tu Radio Online. Siempre informando, siempre contigo. Música, noticias, entretenimiento y podcast.">  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">  <style>
     :root {
       --morado: #21002f;
       --morado-2: #5b147f;
@@ -256,8 +248,13 @@
     }
 
     @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
     }
 
     /* ================= GENERAL ================= */
@@ -323,6 +320,7 @@
       height: 100px;
       border-radius: 50%;
       object-fit: contain;
+      flex-shrink: 0;
     }
 
     .player-info h3 {
@@ -435,6 +433,10 @@
     }
 
     /* ================= PROGRAMACION ================= */
+
+    .schedule-section {
+      background: #0d0d0d;
+    }
 
     .schedule {
       max-width: 850px;
@@ -562,6 +564,10 @@
 
     /* ================= CONTACTO ================= */
 
+    .contact {
+      background: #0d0d0d;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -573,6 +579,11 @@
       background: var(--negro-2);
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-box h3 {
+      margin-bottom: 15px;
+      font-size: 25px;
     }
 
     .contact-item {
@@ -648,6 +659,13 @@
 
     footer a:hover {
       color: var(--naranja);
+    }
+
+    .footer-logo {
+      width: 85px;
+      height: 85px;
+      object-fit: contain;
+      margin-bottom: 15px;
     }
 
     .footer-bottom {
@@ -777,281 +795,507 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
-</head>
+  </style></head><body>  <!-- ================= HEADER ================= -->  <header>
+    <div class="header-container">  <a href="#inicio" class="brand">
 
-<body>
+    <img src="LOGOTIPO VIBRA.PNG.PNG"
+         alt="Vibra Tu Radio">
 
-  <!-- ================= HEADER ================= -->
+    <div>
+      VIBRA TU RADIO<br>
+      <span>ONLINE</span>
+    </div>
 
-  <header>
-    <div class="header-container">
+  </a>
 
-      <a href="#inicio" class="brand">
-        <img src="LOGOTIPO VIBRA.PNG.PNG" alt="Vibra Tu Radio">
-        <div>
-          VIBRA TU RADIO<br>
-          <span>ONLINE</span>
-        </div>
-      </a>
+  <nav>
+    <a href="#inicio">INICIO</a>
+    <a href="#en-vivo">EN VIVO</a>
+    <a href="#noticias">NOTICIAS</a>
+    <a href="#programacion">PROGRAMACIÓN</a>
+    <a href="#podcast">PODCAST</a>
+    <a href="#publicidad">PUBLICIDAD</a>
+    <a href="#contacto">CONTACTO</a>
+  </nav>
 
-      <nav>
-        <a href="#inicio">INICIO</a>
-        <a href="#en-vivo">EN VIVO</a>
-        <a href="#noticias">NOTICIAS</a>
-        <a href="#programacion">PROGRAMACIÓN</a>
-        <a href="#podcast">PODCAST</a>
-        <a href="#publicidad">PUBLICIDAD</a>
-        <a href="#contacto">CONTACTO</a>
-      </nav>
+  <div class="social">
 
-      <div class="social">
+    <a href="https://www.facebook.com/share/19FChaREyt/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Facebook">
+      <i class="fa-brands fa-facebook-f"></i>
+    </a>
 
-        <a href="https://www.facebook.com/share/19FChaREyt/"
-           target="_blank"
-           aria-label="Facebook">
-          <i class="fa-brands fa-facebook-f"></i>
+    <a href="https://www.instagram.com/vibr.a"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <a href="https://youtube.com/@vibraturadio"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="YouTube">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+
+    <a href="https://wa.me/573112771457"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+  </div>
+
+</div>
+
+  </header>  <!-- ================= HERO ================= -->  <main id="inicio"><section class="hero">
+
+  <div class="hero-content">
+
+    <div>
+
+      <div class="live-label">
+        <span class="live-dot"></span>
+        TRANSMISIÓN EN VIVO
+      </div>
+
+      <h1>
+        VIBRA<br>
+        <span>TU RADIO</span>
+      </h1>
+
+      <p>
+        Música, información, entretenimiento y voces que conectan.
+        Estamos contigo donde estés.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#en-vivo" class="btn btn-primary">
+          <i class="fa-solid fa-play"></i>
+          ESCUCHAR EN VIVO
         </a>
 
-        <a href="https://www.instagram.com/vibr.a"
-           target="_blank"
-           aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="https://youtube.com/@vibraturadio"
-           target="_blank"
-           aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-
-        <a href="https://wa.me/573112771457"
-           target="_blank"
-           aria-label="WhatsApp">
-          <i class="fa-brands fa-whatsapp"></i>
+        <a href="#programacion" class="btn btn-secondary">
+          <i class="fa-solid fa-calendar-days"></i>
+          VER PROGRAMACIÓN
         </a>
 
       </div>
 
     </div>
-  </header>
 
+    <div class="hero-logo">
 
-  <!-- ================= HERO ================= -->
+      <img src="LOGOTIPO VIBRA.PNG.PNG"
+           alt="Vibra Tu Radio">
 
-  <main id="inicio">
+    </div>
 
-    <section class="hero">
+  </div>
 
-      <div class="hero-content">
-
-        <div>
-
-          <div class="live-label">
-            <span class="live-dot"></span>
-            TRANSMISIÓN EN VIVO
-          </div>
-
-          <h1>
-            VIBRA<br>
-            <span>TU RADIO</span>
-          </h1>
-
-          <p>
-            Música, información, entretenimiento y voces que conectan.
-            Estamos contigo donde estés.
-          </p>
-
-          <div class="hero-buttons">
-
-            <a href="#en-vivo" class="btn btn-primary">
-              <i class="fa-solid fa-play"></i>
-              ESCUCHAR EN VIVO
-            </a>
-
-            <a href="#programacion" class="btn btn-secondary">
-              <i class="fa-solid fa-calendar-days"></i>
-              VER PROGRAMACIÓN
-            </a>
-
-          </div>
-
-        </div>
-
-        <div class="hero-logo">
-         <img src="LOGOTIPO VIBRA.PNG.PNG" alt="Vibra Tu Radio">
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= EN VIVO ================= -->
-
-    <section class="player-section" id="en-vivo">
-
-      <div class="container">
-
-        <div class="section-title">
-          <small>AHORA MISMO</small>
-          <h2>Escúchanos en vivo</h2>
-          <p>
-            Dale play y disfruta nuestra transmisión online.
-          </p>
-        </div>
-
-        <div class="player">
-
-         <div class="player-top">
-
-  <img class="player-logo"
-       <img src="LOGOTIPO VIBRA.PNG.PNG" alt="Vibra Tu Radio">
-
-  <div class="player-info">
-
-              <h3>Vibra Tu Radio Online</h3>
-
-              <p>
-                Música, información y entretenimiento.
-              </p>
-
-              <span class="onair">
-                ● AL AIRE
-              </span>
-
-            </div>
-
-          </div>
-
-          <!-- NO CAMBIAR ESTE ENLACE -->
-          <audio controls preload="none"
-                 src="https://stream.integracionvirtual.com/proxy/vibraturadio?mp=/stream">
-            Tu navegador no permite reproducir el audio.
-          </audio>
-
-          <div class="player-message">
-            Presiona ▶️ para comenzar a escuchar.
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= SERVICIOS ================= -->
-
-    <section>
-
-      <div class="container">
-
-        <div class="section-title">
-          <small>VIBRA CONTIGO</small>
-          <h2>Mucho más que radio</h2>
-        </div>
-
-        <div class="cards">
-
-          <div class="card">
-
-            <div class="card-icon">
-              <i class="fa-solid fa-radio"></i>
-            </div>
-
-            <h3>Radio Online</h3>
-
-            <p>
-              Disfruta nuestra programación desde cualquier lugar
-              y en cualquier dispositivo.
-            </p>
-
-          </div>
-
-
-          <div class="card">
-
-            <div class="card-icon">
-              <i class="fa-solid fa-newspaper"></i>
-            </div>
-
-            <h3>Noticias</h3>
-
-            <p>
-              Información y actualidad para mantenerte siempre al día.
-            </p>
-
-          </div>
-
-
-          <div class="card">
-
-            <div class="card-icon">
-              <i class="fa-solid fa-microphone-lines"></i>
-            </div>
-
-            <h3>Podcast</h3>
-
-            <p>
-              Conversaciones, historias y contenidos para escuchar
-              cuando quieras.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= NOTICIAS ================= -->
-
-    <section class="news-section" id="noticias">
-
-      <div class="container
-        </div>
 </section>
+
+
+<!-- ================= EN VIVO ================= -->
+
+<section class="player-section" id="en-vivo">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <small>AHORA MISMO</small>
+
+      <h2>Escúchanos en vivo</h2>
+
+      <p>
+        Dale play y disfruta nuestra transmisión online.
+      </p>
+
+    </div>
+
+    <div class="player">
+
+      <div class="player-top">
+
+        <img class="player-logo"
+             src="LOGOTIPO VIBRA.PNG.PNG"
+             alt="Vibra Tu Radio">
+
+        <div class="player-info">
+
+          <h3>Vibra Tu Radio Online</h3>
+
+          <p>
+            Música, información y entretenimiento.
+          </p>
+
+          <span class="onair">
+            ● AL AIRE
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= REPRODUCTOR ================= -->
+      <!-- NO MODIFICAR ESTE ENLACE -->
+
+      <audio controls preload="none"
+             src="https://stream.integracionvirtual.com/proxy/vibraturadio?mp=/stream">
+        Tu navegador no permite reproducir el audio.
+      </audio>
+
+      <div class="player-message">
+        Presiona ▶️ para comenzar a escuchar.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SERVICIOS ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <small>VIBRA CONTIGO</small>
+
+      <h2>Mucho más que radio</h2>
+
+      <p>
+        Información, entretenimiento y contenidos para acompañarte
+        todos los días.
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="card-icon">
+          <i class="fa-solid fa-radio"></i>
+        </div>
+
+        <h3>Radio Online</h3>
+
+        <p>
+          Disfruta nuestra programación desde cualquier lugar
+          y en cualquier dispositivo.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          <i class="fa-solid fa-newspaper"></i>
+        </div>
+
+        <h3>Noticias</h3>
+
+        <p>
+          Información y actualidad para mantenerte siempre al día.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <div class="card-icon">
+          <i class="fa-solid fa-microphone-lines"></i>
+        </div>
+
+        <h3>Podcast</h3>
+
+        <p>
+          Conversaciones, historias y contenidos para escuchar
+          cuando quieras.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= NOTICIA
+  <section id="programacion">
+  <div class="container">
+
+    <div class="section-title">
+      <div class="small">SINTONÍZANOS</div>
+      <h2>Programación</h2>
+    </div>
+
+    <div class="schedule">
+
+      <div class="schedule-row">
+        <strong>MAÑANA</strong>
+        <span>Música, noticias y compañía para comenzar el día.</span>
+      </div>
+
+      <div class="schedule-row">
+        <strong>MEDIODÍA</strong>
+        <span>Información, actualidad y entretenimiento.</span>
+      </div>
+
+      <div class="schedule-row">
+        <strong>TARDE</strong>
+        <span>Música, historias y contenidos para acompañarte.</span>
+      </div>
+
+      <div class="schedule-row">
+        <strong>NOCHE</strong>
+        <span>Conversaciones, música y programación especial.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="podcast" class="news-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <div class="small">VIBRA EN VOZ ALTA</div>
+      <h2>Podcast</h2>
+    </div>
+
+    <div class="podcast-box">
+
+      <i class="fas fa-microphone-lines"></i>
+
+      <h3>Historias que conectan</h3>
+
+      <p>
+        Muy pronto encontrarás aquí nuestros podcasts y conversaciones
+        para escuchar cuando quieras.
+      </p>
+
+      <div class="slogan">
+        PRÓXIMAMENTE
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="stats">
+
+  <div class="container">
+
+    <div class="stats-grid">
+
+      <div class="stat">
+        <strong>13.600+</strong>
+        <span>Seguidores en Facebook</span>
+      </div>
+
+      <div class="stat">
+        <strong>100K+</strong>
+        <span>Visualizaciones diarias</span>
+      </div>
+
+      <div class="stat">
+        <strong>24/7</strong>
+        <span>Radio online</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="publicidad">
+
+  <div class="container">
+
+    <div class="section-title">
+      <div class="small">LLEVA TU MARCA MÁS LEJOS</div>
+      <h2>Publicidad</h2>
+    </div>
+
+    <div class="ad-box">
+
+      <h3>Haz que tu marca se escuche</h3>
+
+      <p>
+        Promociona tu negocio en nuestra radio y redes sociales
+        con contenidos que conecten con nuestra audiencia.
+      </p>
+
+      <a
+        class="btn"
+        href="https://wa.me/573112771457"
+        target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        HABLAR POR WHATSAPP
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="contacto" class="news-section">
+
+  <div class="container">
+
+    <div class="section-title">
+      <div class="small">ESTAMOS PARA ESCUCHARTE</div>
+      <h2>Contacto</h2>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-card">
+
+        <h3>Comunícate con nosotros</h3>
+
+        <p>
+          Para publicidad, alianzas, contenidos o información,
+          escríbenos.
+        </p>
+
+        <a
+          class="contact-link"
+          href="https://wa.me/573112771457"
+          target="_blank">
+
+          <i class="fab fa-whatsapp"></i>
+          WhatsApp
+
+        </a>
+
+      </div>
+
+
+      <div class="contact-card">
+
+        <h3>Síguenos en redes</h3>
+
+        <p>
+          Encuentra noticias, transmisiones y contenidos
+          de Vibra Tu Radio.
+        </p>
+
+        <a
+          class="contact-link"
+          href="https://www.facebook.com/share/19FChaREyt/"
+          target="_blank">
+          Facebook
+        </a>
+
+        <a
+          class="contact-link"
+          href="https://www.instagram.com/vibr.a"
+          target="_blank">
+          Instagram
+        </a>
+
+        <a
+          class="contact-link"
+          href="https://youtube.com/@vibraturadio"
+          target="_blank">
+          YouTube
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 </main>
 
+
 <footer>
-  <div class="footer-grid">
 
-    <div>
-      <h3>VIBRA TU RADIO ONLINE</h3>
-      <p>
-        Música, información y entretenimiento.
-        Siempre informando, siempre contigo.
-      </p>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+
+        <img
+          src="LOGOTIPO VIBRA.PNG.PNG"
+          alt="Vibra Tu Radio">
+
+        <div>
+
+          Vibra Tu Radio Online<br>
+
+          <span class="slogan">
+            Siempre informando, siempre contigo.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <a href="#inicio">Inicio</a>
+
+        <a href="#en-vivo">En vivo</a>
+
+        <a href="#noticias">Noticias</a>
+
+        <a href="#programacion">Programación</a>
+
+        <a href="#podcast">Podcast</a>
+
+        <a href="#publicidad">Publicidad</a>
+
+        <a href="#contacto">Contacto</a>
+
+      </div>
+
     </div>
 
-    <div>
-      <h3>Enlaces</h3>
-      <a href="#inicio">Inicio</a>
-      <a href="#en-vivo">En vivo</a>
-      <a href="#noticias">Noticias</a>
-      <a href="#programacion">Programación</a>
-      <a href="#podcast">Podcast</a>
-    </div>
 
-    <div>
-      <h3>Contacto</h3>
-      <a href="https://wa.me/573112771457" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i> WhatsApp
-      </a>
-      <a href="mailto:vibraturadio@gmail.com">
-        <i class="fa-solid fa-envelope"></i> Correo electrónico
-      </a>
+    <div class="copyright">
+
+      © 2026 Vibra Tu Radio Online.
+      Todos los derechos reservados.
+
     </div>
 
   </div>
 
-  <div class="footer-bottom">
-    © 2026 Vibra Tu Radio Online · Siempre informando, siempre contigo.
-  </div>
 </footer>
+
 
 </body>
 </html>
