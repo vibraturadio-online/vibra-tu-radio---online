@@ -1246,60 +1246,8 @@
 
     </div>
 
-    <div class="news-grid">
-
-      <article class="news-card">
-
-        <div class="news-image">
-
-  <img
-    src="ley-animal.jpg.jpg"
-    alt="Ley de protección animal en Colombia"
-    style="width:100%; height:100%; object-fit:cover;"
-  >
-
+    <div class="news-grid" id="news-grid">
 </div>
-
-        <div class="news-content">
-
-          <span class="tag">
-            NACIONAL
-          </span>
-
-          <h3>
-            ¡Es ley! Colombia sanciona con cárcel el abuso sexual contra animales
-          </h3>
-
-          <small>
-            26 de agosto de 2026
-          </small>
-
-          <p>
-            Colombia dio un nuevo paso en la protección de los animales
-            tras la sanción de una ley que incorpora al Código Penal el
-            delito de acceso carnal a animales.
-          </p>
-
-          <p>
-            La medida establece penas de prisión para quienes cometan
-            este tipo de abuso y contempla circunstancias agravantes
-            que pueden aumentar considerablemente las condenas.
-          </p>
-
-          <p>
-            La iniciativa fue impulsada por la senadora Esmeralda Hernández
-            junto a organizaciones defensoras de los animales, después
-            de más de dos años de trabajo y movilización.
-          </p>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
 </section>
 
     <!-- ================= PROGRAMACION ================= -->
@@ -1762,7 +1710,104 @@
 
   </footer>
 
+<script>
 
+async function cargarNoticias() {
+
+  const contenedor = document.getElementById("news-grid");
+
+  if (!contenedor) return;
+
+  try {
+
+    const respuesta = await fetch("/api/noticias");
+
+    if (!respuesta.ok) {
+      throw new Error("No se pudieron cargar las noticias");
+    }
+
+    const noticias = await respuesta.json();
+
+    contenedor.innerHTML = "";
+
+    if (!noticias || noticias.length === 0) {
+
+      contenedor.innerHTML = `
+        <p style="text-align:center; color:#cfcfcf;">
+          No hay noticias publicadas por el momento.
+        </p>
+      `;
+
+      return;
+    }
+
+    noticias.forEach(noticia => {
+
+      const tarjeta = document.createElement("article");
+
+      tarjeta.className = "news-card";
+
+      tarjeta.innerHTML = `
+
+        <div class="news-image">
+
+          ${
+            noticia.imagen
+            ? `<img
+                src="${noticia.imagen}"
+                alt="${noticia.titulo || "Noticia Vibra Tu Radio"}"
+                style="width:100%; height:100%; object-fit:cover;"
+              >`
+            : <i class="fa-solid fa-newspaper"></i>
+          }
+
+        </div>
+
+        <div class="news-content">
+
+          <span class="tag">
+            ${noticia.categoria || "ACTUALIDAD"}
+          </span>
+
+          <h3>
+            ${noticia.titulo || ""}
+          </h3>
+
+          ${
+            noticia.fecha
+            ? <small>${noticia.fecha}</small>
+            : ""
+          }
+
+          <p>
+            ${noticia.resumen || noticia.contenido || ""}
+          </p>
+
+        </div>
+
+      `;
+
+      contenedor.appendChild(tarjeta);
+
+    });
+
+  } catch (error) {
+
+    console.error("Error cargando noticias:", error);
+
+    contenedor.innerHTML = `
+      <p style="text-align:center; color:#cfcfcf;">
+        No fue posible cargar las noticias.
+      </p>
+    `;
+
+  }
+
+}
+
+cargarNoticias();
+
+</script>
 </body>
 
 </html>
