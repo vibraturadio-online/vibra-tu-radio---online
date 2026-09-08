@@ -134,6 +134,7 @@
     async function guardarNoticia() {
 
       const noticia = {
+        id: window.noticiaEditando || null,
         titulo: document.getElementById("titulo").value,
         categoria: document.getElementById("categoria").value,
         imagen: document.getElementById("imagen").value,
@@ -154,7 +155,7 @@
       try {
 
         const respuesta = await fetch("/api/noticias", {
-          method: "POST",
+  method: window.noticiaEditando ? "PUT" : "POST",
           headers: {
             "Content-Type": "application/json"
           },
@@ -165,7 +166,12 @@
 
         mensaje.style.display = "block";
         mensaje.textContent = resultado.mensaje || "Solicitud enviada.";
-
+if (window.noticiaEditando) {
+  window.noticiaEditando = null;
+  document.querySelector(
+    'button[onclick="guardarNoticia()"]'
+  ).textContent = "Guardar noticia";
+}
       } catch (error) {
 
         console.error(error);
@@ -231,6 +237,45 @@
     }
 
     cargarNoticiasAdmin();
+    async function editarNoticia(id) {
+
+  try {
+
+    const respuesta = await fetch("/api/noticias");
+
+    if (!respuesta.ok) {
+      throw new Error("No se pudieron cargar las noticias");
+    }
+
+    const noticias = await respuesta.json();
+
+    const noticia = noticias.find(n => n.id === id);
+
+    if (!noticia) {
+      alert("No se encontró la noticia.");
+      return;
+    }
+
+    document.getElementById("titulo").value = noticia.titulo || "";
+    document.getElementById("imagen").value = noticia.imagen || "";
+    document.getElementById("fecha").value = noticia.fecha || "";
+    document.getElementById("resumen").value =
+      noticia.contenido || noticia.resumen || "";
+
+    window.noticiaEditando = id;
+
+    document.querySelector(
+      'button[onclick="guardarNoticia()"]'
+    ).textContent = "Actualizar noticia";
+
+  } catch (error) {
+
+    console.error(error);
+    alert("No se pudo cargar la noticia para editar.");
+
+  }
+
+}
   </script>
 
 </body>
