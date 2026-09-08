@@ -116,7 +116,11 @@
       </button>
 
       <div id="mensaje"></div>
+<h2 style="margin-top:35px;">Noticias publicadas</h2>
 
+      <div id="lista-noticias">
+        Cargando noticias...
+      </div>
     </div>
 
     <a class="volver" href="/">
@@ -173,7 +177,60 @@
       }
 
     }
+ async function cargarNoticiasAdmin() {
 
+      const lista = document.getElementById("lista-noticias");
+
+      try {
+
+        const respuesta = await fetch("/api/noticias");
+
+        if (!respuesta.ok) {
+          throw new Error("No se pudieron cargar las noticias");
+        }
+
+        const noticias = await respuesta.json();
+
+        lista.innerHTML = "";
+
+        if (!noticias || noticias.length === 0) {
+          lista.innerHTML = "<p>No hay noticias publicadas.</p>";
+          return;
+        }
+
+        noticias.forEach(noticia => {
+
+          const item = document.createElement("div");
+
+          item.style.border = "1px solid #555";
+          item.style.borderRadius = "10px";
+          item.style.padding = "15px";
+          item.style.marginTop = "15px";
+
+          item.innerHTML = `
+            <strong>${noticia.titulo || ""}</strong>
+            <br>
+            <small>${noticia.fecha || ""}</small>
+            <br>
+            <button type="button" onclick="editarNoticia(${noticia.id})">
+              ✏️ Editar
+            </button>
+          `;
+
+          lista.appendChild(item);
+
+        });
+
+      } catch (error) {
+
+        console.error(error);
+        lista.innerHTML = "<p>No fue posible cargar las noticias.</p>";
+
+      }
+
+    }
+
+    cargarNoticiasAdmin();
   </script>
 
 </body>
