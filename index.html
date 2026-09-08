@@ -1100,9 +1100,9 @@
           <div class="player-top">
 
             <img
-              class="player-logo"
-              <img src="logo-vibra.PNG" alt="Vibra Tu Radio">
-            >
+  class="player-logo"
+  src="logo-vibra.PNG"
+  alt="Vibra Tu Radio"
 
 
             <div class="player-info">
@@ -1758,7 +1758,7 @@ async function cargarNoticias() {
                 alt="${noticia.titulo || "Noticia Vibra Tu Radio"}"
                 style="width:100%; height:100%; object-fit:cover;"
               >`
-            : <i class="fa-solid fa-newspaper"></i>
+            : `<i class="fa-solid fa-newspaper"></i>`
           }
 
         </div>
@@ -1775,7 +1775,7 @@ async function cargarNoticias() {
 
           ${
             noticia.fecha
-            ? <small>${noticia.fecha}</small>
+            ? `<small>${noticia.fecha}</small>`
             : ""
           }
 
