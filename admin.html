@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración - Vibra Tu Radio</title>
 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #090909;
+      color: white;
+      margin: 0;
+      padding: 30px 15px;
+    }
+
+    .contenedor {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #ffc400;
+    }
+
+    .panel {
+      background: #121212;
+      border: 1px solid #5b147f;
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      color: #ffc400;
+      font-weight: bold;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #555;
+      background: #222;
+      color: white;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 13px 22px;
+      border: none;
+      border-radius: 8px;
+      background: #ff7a00;
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffc400;
+    }
+
+    #mensaje {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .volver {
+      display: inline-block;
+      margin-top: 20px;
+      color: #ffc400;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+
+    <h1>Vibra Tu Radio - Administración</h1>
+
+    <div class="panel">
+
+      <h2>Agregar noticia</h2>
+
+      <label for="titulo">Título</label>
+      <input id="titulo" type="text" placeholder="Título de la noticia">
+
+      <label for="categoria">Categoría</label>
+      <input id="categoria" type="text" placeholder="Ejemplo: Actualidad">
+
+      <label for="imagen">Imagen</label>
+      <input id="imagen" type="text" placeholder="URL de la imagen">
+
+      <label for="fecha">Fecha</label>
+      <input id="fecha" type="date">
+
+      <label for="resumen">Resumen</label>
+      <textarea id="resumen" placeholder="Escribe el resumen de la noticia"></textarea>
+
+      <button onclick="guardarNoticia()">
+        Guardar noticia
+      </button>
+
+      <div id="mensaje"></div>
+
+    </div>
+
+    <a class="volver" href="/">
+      ← Volver a Vibra Tu Radio
+    </a>
+
+  </div>
+
+  <script>
+
+    async function guardarNoticia() {
+
+      const noticia = {
+        titulo: document.getElementById("titulo").value,
+        categoria: document.getElementById("categoria").value,
+        imagen: document.getElementById("imagen").value,
+        fecha: document.getElementById("fecha").value,
+        resumen: document.getElementById("resumen").value
+      };
+
+      const mensaje = document.getElementById("mensaje");
+
+      if (!noticia.titulo || !noticia.resumen) {
+
+        mensaje.style.display = "block";
+        mensaje.textContent = "Debes escribir al menos el título y el resumen.";
+        return;
+
+      }
+
+      try {
+
+        const respuesta = await fetch("/api/noticias", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(noticia)
+        });
+
+        const resultado = await respuesta.json();
+
+        mensaje.style.display = "block";
+        mensaje.textContent = resultado.mensaje || "Solicitud enviada.";
+
+      } catch (error) {
+
+        console.error(error);
+
+        mensaje.style.display = "block";
+        mensaje.textContent =
+          "No se pudo conectar con el servidor.";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
