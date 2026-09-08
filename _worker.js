@@ -33,7 +33,47 @@ export default {
 
       return Response.json(results);
     }
+// Editar noticia
+if (url.pathname === "/api/noticias" && request.method === "PUT") {
+  try {
+    const noticia = await request.json();
 
+    const id = noticia.id;
+    const titulo = noticia.titulo || "";
+    const contenido = noticia.resumen || noticia.contenido || "";
+    const imagen = noticia.imagen || "";
+    const fecha = noticia.fecha || "";
+    const autor = noticia.autor || "Vibra Tu Radio";
+
+    if (!id || !titulo || !contenido) {
+      return Response.json(
+        { mensaje: "Faltan datos para editar la noticia." },
+        { status: 400 }
+      );
+    }
+
+    await env.DB.prepare(
+      `UPDATE noticias
+       SET titulo = ?, contenido = ?, imagen = ?, fecha = ?, autor = ?
+       WHERE id = ?`
+    )
+      .bind(titulo, contenido, imagen, fecha, autor, id)
+      .run();
+
+    return Response.json({
+      mensaje: "Noticia actualizada correctamente."
+    });
+
+  } catch (error) {
+    return Response.json(
+      {
+        mensaje: "No se pudo actualizar la noticia.",
+        error: error.message
+      },
+      { status: 500 }
+    );
+  }
+}
     // Guardar noticia
     if (url.pathname === "/api/noticias" && request.method === "POST") {
       try {
