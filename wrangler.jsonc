@@ -6,5 +6,12 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS"
-  }
+  },
+ "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "vibra-noticias",
+      "database_id": "552d3134-f566-4630-b0de-bf9d938f6e31"
+    }
+  ]
 }
