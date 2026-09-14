@@ -33,47 +33,58 @@ export default {
 
       return Response.json(results);
     }
-// Editar noticia
-if (url.pathname === "/api/noticias" && request.method === "PUT") {
-  try {
-    const noticia = await request.json();
 
-    const id = noticia.id;
-    const titulo = noticia.titulo || "";
-    const contenido = noticia.resumen || noticia.contenido || "";
-    const imagen = noticia.imagen || "";
-    const fecha = noticia.fecha || "";
-    const autor = noticia.autor || "Vibra Tu Radio";
+    // Editar noticia
+    if (url.pathname === "/api/noticias" && request.method === "PUT") {
+      try {
+        const noticia = await request.json();
 
-    if (!id || !titulo || !contenido) {
-      return Response.json(
-        { mensaje: "Faltan datos para editar la noticia." },
-        { status: 400 }
-      );
+        const id = noticia.id;
+        const titulo = noticia.titulo || "";
+        const contenido = noticia.resumen || noticia.contenido || "";
+        const imagen = noticia.imagen || "";
+        const fecha = noticia.fecha || "";
+        const autor = noticia.autor || "Vibra Tu Radio";
+        const categoria = noticia.categoria || "ACTUALIDAD";
+
+        if (!id || !titulo || !contenido) {
+          return Response.json(
+            { mensaje: "Faltan datos para editar la noticia." },
+            { status: 400 }
+          );
+        }
+
+        await env.DB.prepare(
+          `UPDATE noticias
+           SET titulo = ?, contenido = ?, imagen = ?, fecha = ?, autor = ?, categoria = ?
+           WHERE id = ?`
+        )
+          .bind(
+            titulo,
+            contenido,
+            imagen,
+            fecha,
+            autor,
+            categoria,
+            id
+          )
+          .run();
+
+        return Response.json({
+          mensaje: "Noticia actualizada correctamente."
+        });
+
+      } catch (error) {
+        return Response.json(
+          {
+            mensaje: "No se pudo actualizar la noticia.",
+            error: error.message
+          },
+          { status: 500 }
+        );
+      }
     }
 
-    await env.DB.prepare(
-      `UPDATE noticias
-       SET titulo = ?, contenido = ?, imagen = ?, fecha = ?, autor = ?
-       WHERE id = ?`
-    )
-      .bind(titulo, contenido, imagen, fecha, autor, id)
-      .run();
-
-    return Response.json({
-      mensaje: "Noticia actualizada correctamente."
-    });
-
-  } catch (error) {
-    return Response.json(
-      {
-        mensaje: "No se pudo actualizar la noticia.",
-        error: error.message
-      },
-      { status: 500 }
-    );
-  }
-}
     // Guardar noticia
     if (url.pathname === "/api/noticias" && request.method === "POST") {
       try {
@@ -82,8 +93,10 @@ if (url.pathname === "/api/noticias" && request.method === "PUT") {
         const titulo = noticia.titulo || "";
         const contenido = noticia.resumen || noticia.contenido || "";
         const imagen = noticia.imagen || "";
-        const fecha = noticia.fecha || new Date().toISOString().split("T")[0];
+        const fecha =
+          noticia.fecha || new Date().toISOString().split("T")[0];
         const autor = noticia.autor || "Vibra Tu Radio";
+        const categoria = noticia.categoria || "ACTUALIDAD";
 
         if (!titulo || !contenido) {
           return Response.json(
@@ -94,15 +107,23 @@ if (url.pathname === "/api/noticias" && request.method === "PUT") {
 
         await env.DB.prepare(
           `INSERT INTO noticias
-           (titulo, contenido, imagen, fecha, autor)
-           VALUES (?, ?, ?, ?, ?)`
+           (titulo, contenido, imagen, fecha, autor, categoria)
+           VALUES (?, ?, ?, ?, ?, ?)`
         )
-          .bind(titulo, contenido, imagen, fecha, autor)
+          .bind(
+            titulo,
+            contenido,
+            imagen,
+            fecha,
+            autor,
+            categoria
+          )
           .run();
 
         return Response.json({
           mensaje: "Noticia guardada correctamente."
         });
+
       } catch (error) {
         return Response.json(
           {
