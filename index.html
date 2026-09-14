@@ -1741,7 +1741,10 @@ async function cargarNoticias() {
       return;
     }
 
-    noticias.forEach(noticia => {
+    // Mostrar solamente las 6 noticias más recientes
+    const noticiasRecientes = noticias.slice(0, 6);
+
+    noticiasRecientes.forEach(noticia => {
 
       const tarjeta = document.createElement("article");
 
@@ -1780,8 +1783,8 @@ async function cargarNoticias() {
           }
 
           <p style="white-space: pre-wrap;">
-  ${noticia.resumen || noticia.contenido || ""}
-</p>
+            ${noticia.resumen || noticia.contenido || ""}
+          </p>
 
         </div>
 
@@ -1804,8 +1807,6 @@ async function cargarNoticias() {
   }
 
 }
-
-cargarNoticias();
 
 </script>
 </body>
