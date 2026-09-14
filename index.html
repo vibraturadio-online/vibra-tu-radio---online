@@ -1713,13 +1713,11 @@
 <script>
 
 async function cargarNoticias() {
-
   const contenedor = document.getElementById("news-grid");
 
   if (!contenedor) return;
 
   try {
-
     const respuesta = await fetch("/api/noticias");
 
     if (!respuesta.ok) {
@@ -1730,72 +1728,56 @@ async function cargarNoticias() {
 
     contenedor.innerHTML = "";
 
-    if (!noticias || noticias.length === 0) {
-
+    if (!Array.isArray(noticias) || noticias.length === 0) {
       contenedor.innerHTML = `
         <p style="text-align:center; color:#cfcfcf;">
           No hay noticias publicadas por el momento.
         </p>
       `;
-
       return;
     }
 
-    // Mostrar solamente las 6 noticias más recientes
-    const noticiasRecientes = noticias;
+    // Solo las 6 noticias más recientes
+    const noticiasRecientes = noticias.slice(0, 6);
 
     noticiasRecientes.forEach(noticia => {
-
       const tarjeta = document.createElement("article");
-
       tarjeta.className = "news-card";
 
       tarjeta.innerHTML = `
-
         <div class="news-image">
-
           ${
             noticia.imagen
-            ? `<img
-                src="${noticia.imagen}"
-                alt="${noticia.titulo || "Noticia Vibra Tu Radio"}"
-                style="width:100%; height:100%; object-fit:cover;"
-              >`
-            : `<i class="fa-solid fa-newspaper"></i>`
+              ? `<img
+                  src="${noticia.imagen}"
+                  alt="${noticia.titulo || "Noticia Vibra Tu Radio"}"
+                  style="width:100%; height:100%; object-fit:cover;"
+                >`
+              : `<i class="fa-solid fa-newspaper"></i>`
           }
-
         </div>
 
         <div class="news-content">
+          <span class="tag">${noticia.categoria || "ACTUALIDAD"}</span>
 
-          <span class="tag">
-            ${noticia.categoria || "ACTUALIDAD"}
-          </span>
-
-          <h3>
-            ${noticia.titulo || ""}
-          </h3>
+          <h3>${noticia.titulo || ""}</h3>
 
           ${
             noticia.fecha
-            ? `<small>${noticia.fecha}</small>`
-            : ""
+              ? `<small>${noticia.fecha}</small>`
+              : ""
           }
 
           <p style="white-space: pre-wrap;">
-            ${noticia.resumen || noticia.contenido || ""}
+            ${noticia.contenido || ""}
           </p>
-
         </div>
-
       `;
 
       contenedor.appendChild(tarjeta);
-
     });
 
   } catch (error) {
-
     console.error("Error cargando noticias:", error);
 
     contenedor.innerHTML = `
@@ -1803,10 +1785,10 @@ async function cargarNoticias() {
         No fue posible cargar las noticias.
       </p>
     `;
-
   }
-
 }
+
+cargarNoticias();
 
 </script>
 </body>
