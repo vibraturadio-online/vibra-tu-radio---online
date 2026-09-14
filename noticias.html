@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Noticias | Vibra Tu Radio Online</title>
+
+  <meta name="description" content="Noticias, actualidad e información de Vibra Tu Radio Online.">
+
+  <link rel="icon" href="logo-vibra.PNG">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    header {
+      background: linear-gradient(135deg, #5b168c, #8e24aa);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      color: #eee;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .volver {
+      display: inline-block;
+      margin: 25px 0 10px;
+      color: #ff9800;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .volver:hover {
+      text-decoration: underline;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 25px 0;
+    }
+
+    .section-title small {
+      color: #ff9800;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin: 8px 0;
+    }
+
+    .section-title p {
+      color: #ccc;
+    }
+
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 25px 0 35px;
+    }
+
+    .filtro {
+      border: none;
+      padding: 10px 16px;
+      border-radius: 20px;
+      background: #292929;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .filtro:hover,
+    .filtro.activo {
+      background: #8e24aa;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      padding-bottom: 50px;
+    }
+
+    .news-card {
+      background: #1d1d1d;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+      transition: transform 0.2s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .news-image {
+      height: 210px;
+      background: #292929;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .news-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-image i {
+      font-size: 50px;
+      color: #8e24aa;
+    }
+
+    .news-content {
+      padding: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #8e24aa;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .news-content h3 {
+      font-size: 20px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .news-content small {
+      color: #aaa;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .news-content p {
+      color: #ddd;
+      line-height: 1.6;
+      font-size: 15px;
+      white-space: pre-wrap;
+    }
+
+    .mensaje {
+      text-align: center;
+      color: #ccc;
+      padding: 40px 0 60px;
+    }
+
+    footer {
+      background: #080808;
+      text-align: center;
+      padding: 25px;
+      color: #aaa;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .filtros {
+        gap: 7px;
+      }
+
+      .filtro {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="logo-vibra.PNG" alt="Vibra Tu Radio" class="logo">
+    <h1>Vibra Tu Radio Online</h1>
+    <p>Información, actualidad y contenidos de interés</p>
+  </header>
+
+  <main class="container">
+
+    <a href="/" class="volver">
+      <i class="fa-solid fa-arrow-left"></i>
+      Volver a Vibra Tu Radio
+    </a>
+
+    <div class="section-title">
+      <small>ACTUALIDAD</small>
+      <h2>Todas las noticias</h2>
+      <p>Consulta nuestras noticias más recientes y las publicaciones anteriores.</p>
+    </div>
+
+    <div class="filtros">
+
+      <button class="filtro activo" data-categoria="TODAS">
+        TODAS
+      </button>
+
+      <button class="filtro" data-categoria="ACTUALIDAD">
+        ACTUALIDAD
+      </button>
+
+      <button class="filtro" data-categoria="NACIONAL">
+        NACIONAL
+      </button>
+
+      <button class="filtro" data-categoria="REGIONAL">
+        REGIONAL
+      </button>
+
+      <button class="filtro" data-categoria="LOCAL">
+        LOCAL
+      </button>
+
+      <button class="filtro" data-categoria="POLÍTICA">
+        POLÍTICA
+      </button>
+
+      <button class="filtro" data-categoria="CULTURA">
+        CULTURA
+      </button>
+
+      <button class="filtro" data-categoria="DEPORTES">
+        DEPORTES
+      </button>
+
+      <button class="filtro" data-categoria="ECONOMÍA">
+        ECONOMÍA
+      </button>
+
+      <button class="filtro" data-categoria="COMUNIDAD">
+        COMUNIDAD
+      </button>
+
+      <button class="filtro" data-categoria="ENTRETENIMIENTO">
+        ENTRETENIMIENTO
+      </button>
+
+    </div>
+
+    <div class="news-grid" id="news-grid"></div>
+
+    <div class="mensaje" id="mensaje"></div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Vibra Tu Radio Online</p>
+    <p>Siempre informando, siempre contigo.</p>
+  </footer>
+
+  <script>
+
+    const contenedor = document.getElementById("news-grid");
+    const mensaje = document.getElementById("mensaje");
+
+    let todasLasNoticias = [];
+
+    async function cargarNoticias() {
+
+      try {
+
+        const respuesta = await fetch("/api/noticias");
+
+        if (!respuesta.ok) {
+          throw new Error("No se pudieron cargar las noticias");
+        }
+
+        todasLasNoticias = await respuesta.json();
+
+        mostrarNoticias("TODAS");
+
+      } catch (error) {
+
+        console.error("Error cargando noticias:", error);
+
+        contenedor.innerHTML = "";
+
+        mensaje.textContent =
+          "No fue posible cargar las noticias.";
+
+      }
+
+    }
+
+
+    function mostrarNoticias(categoria) {
+
+      contenedor.innerHTML = "";
+      mensaje.textContent = "";
+
+      let noticias = todasLasNoticias;
+
+      if (categoria !== "TODAS") {
+
+        noticias = todasLasNoticias.filter(noticia =>
+          (noticia.categoria || "ACTUALIDAD").toUpperCase() === categoria
+        );
+
+      }
+
+      if (!noticias || noticias.length === 0) {
+
+        mensaje.textContent =
+          "No hay noticias disponibles en esta categoría.";
+
+        return;
+
+      }
+
+
+      noticias.forEach(noticia => {
+
+        const tarjeta = document.createElement("article");
+
+        tarjeta.className = "news-card";
+
+        tarjeta.innerHTML = `
+
+          <div class="news-image">
+
+            ${
+              noticia.imagen
+
+              ? `<img
+                  src="${noticia.imagen}"
+                  alt="${noticia.titulo || "Noticia Vibra Tu Radio"}"
+                >`
+
+              : `<i class="fa-solid fa-newspaper"></i>`
+            }
+
+          </div>
+
+
+          <div class="news-content">
+
+            <span class="tag">
+              ${noticia.categoria || "ACTUALIDAD"}
+            </span>
+
+
+            <h3>
+              ${noticia.titulo || ""}
+            </h3>
+
+
+            ${
+              noticia.fecha
+              ? `<small>${noticia.fecha}</small>`
+              : ""
+            }
+
+
+            <p>
+              ${noticia.contenido || ""}
+            </p>
+
+          </div>
+
+        `;
+
+        contenedor.appendChild(tarjeta);
+
+      });
+
+    }
+
+
+    document.querySelectorAll(".filtro").forEach(boton => {
+
+      boton.addEventListener("click", () => {
+
+        document
+          .querySelectorAll(".filtro")
+          .forEach(b => b.classList.remove("activo"));
+
+        boton.classList.add("activo");
+
+        const categoria =
+          boton.getAttribute("data-categoria");
+
+        mostrarNoticias(categoria);
+
+      });
+
+    });
+
+
+    cargarNoticias();
+
+  </script>
+
+</body>
+</html>
